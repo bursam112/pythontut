@@ -9,9 +9,10 @@ screen = pygame.display.set_mode((1540, 804))
 pygame.display.set_caption("Graphing Calculator")
 graph = pygame.image.load('graph.png')
 
-
 points = []
 lines = []  # This was so clever
+
+
 def display_equation(x_forward, x_backward, y_forward, y_backward, last_position_forward, last_position_backwards):
     if x <= 770:
         points.append((screen, (255, 0, 0), (x_forward, y_forward), 3))
@@ -42,7 +43,7 @@ clock = pygame.time.Clock()
 temp_coordinate_f = (770, 402)
 temp_coordinate_b = (770, 402)
 # Zoom (%)
-zoom_X = 100
+zoom_X = 50
 zoom_Y = 100
 
 while running:
@@ -68,8 +69,8 @@ while running:
 
     # To draw lines between
     if x > 0:
-        temp_coordinate_f = (x1+770, -y1+402)
-        temp_coordinate_b = (x2+770, -y2+402)
+        temp_coordinate_f = (x1 + 770, -y1 + 402)
+        temp_coordinate_b = (x2 + 770, -y2 + 402)
 
     # X values
     x1 = x * zoom_X
@@ -80,7 +81,7 @@ while running:
 
     # Screen Update
     screen.blit(graph, (0, 0))
-    display_equation(x1+770, x2+770, -y1+402, -y2+402, temp_coordinate_f, temp_coordinate_b)
+    display_equation(x1 + 770, x2 + 770, -y1 + 402, -y2 + 402, temp_coordinate_f, temp_coordinate_b)
     x += 1
     pygame.display.update()
     # 144 fps
