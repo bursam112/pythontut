@@ -9,9 +9,10 @@ screen = pygame.display.set_mode((1540, 804))
 pygame.display.set_caption("Graphing Calculator")
 graph = pygame.image.load('graph.png')
 
-
 points = []
 lines = []  # This was so clever
+
+
 def display_equation(x_forward, x_backward, y_forward, y_backward, last_position_forward, last_position_backwards):
     if x <= 770:
         points.append((screen, (255, 0, 0), (x_forward, y_forward), 3))
