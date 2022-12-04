@@ -42,7 +42,7 @@ clock = pygame.time.Clock()
 temp_coordinate_f = (770, 402)
 temp_coordinate_b = (770, 402)
 # Zoom (%)
-zoom_X = 6
+zoom_X = 100
 zoom_Y = 100
 
 while running:
@@ -75,8 +75,8 @@ while running:
     x1 = x * zoom_X
     x2 = -x * zoom_X
     # Y values (equation)
-    y1 = -(math.sin(x1)) * zoom_Y
-    y2 = -(math.sin(x2)) * zoom_Y
+    y1 = math.sin(x1) * zoom_Y
+    y2 = math.sin(x2) * zoom_Y
 
     # Screen Update
     screen.blit(graph, (0, 0))
