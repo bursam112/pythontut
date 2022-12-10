@@ -10,18 +10,20 @@ pygame.display.set_caption("The Earth and the Moon")
 earth_img = pygame.image.load('earth_picture.png')
 earth_img_scaled = pygame.transform.scale(earth_img, (256, 256))
 
-new_img_gradient(earth_img_scaled.get_size())
-earth_shadow = pygame.image.load('shadow.png')
+new_img_gradient(earth_img_scaled.get_size(), 'earth_shadow')
+earth_shadow = pygame.image.load('earth_shadow.png')
 earth_shadow_scaled = pygame.transform.scale(earth_shadow, earth_img_scaled.get_size())
 
 moon_img = pygame.image.load('moon 2.png')
-moon_img_scaled = pygame.transform.scale(moon_img, (50, 50))
+moon_img_scaled = pygame.transform.scale(moon_img, (64, 64))
 
-new_img_gradient(moon_img_scaled.get_size())
-moon_shadow = pygame.image.load('shadow.png')
+new_img_gradient(moon_img_scaled.get_size(), 'moon_shadow')
+moon_shadow = pygame.image.load('moon_shadow.png')
 moon_shadow_scaled = pygame.transform.scale(moon_shadow, moon_img_scaled.get_size())
 
 bg_img = pygame.image.load('starry sky 2.jpg')
+
+pygame.display.set_icon(earth_img_scaled)
 
 
 def display_bg():
@@ -43,8 +45,8 @@ def rotation(image, degrees, top_left):
     screen.blit(rotated_image, new_rect)
 
 def earth_orbit(apoapsis, periapsis, degrees):
-    earth_center_x = 720
-    earth_center_y = 352
+    earth_center_x = 770
+    earth_center_y = 402
 
     orbit_coordinates = (apoapsis*to_degrees(math.cos(degrees)) + earth_center_x,
                          periapsis*to_degrees(math.sin(degrees)) + earth_center_y)
@@ -54,9 +56,9 @@ def to_degrees(value):
     return value * 180 / math.pi
 
 
-# def find_center(image, top_left):
-    # new_rect = image.get_rect(center=image.get_rect(topleft=top_left).center)
-    # return new_rect
+def find_center(image, top_left):
+    new_rect = image.get_rect(center=image.get_rect(topleft=top_left).center)
+    return new_rect
 
 
 clock = pygame.time.Clock()
@@ -85,8 +87,8 @@ while running:
         moon(counter, shadow_counter)
         earth(shadow_counter)
 
-    counter += 0.01
-    shadow_counter += 0.01
+    counter += 0.005
+    shadow_counter += 0.005
     pygame.display.update()
     clock.tick(144)
 

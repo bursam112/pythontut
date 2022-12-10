@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
 import math
 
-def new_img_gradient(size):
+def new_img_gradient(size, name):
     img = Image.new(mode='RGBA', size=size, color=(0, 0, 0, 0))
 
     def gradient_by_point(image):
@@ -12,12 +12,11 @@ def new_img_gradient(size):
                             math.sqrt(-(pixel_row-image.size[0]//2)**2+(image.size[0]//2)**2)+image.size[0]//2,  # right-most x value for the circle at point y
                             pixel_row),  # y value
                         fill=(0, 0, 0, round((pixel_row/image.size[0])*255)))
-        image.save('shadow.png')
+        image.save(f'{name}.png')
         return image
 
     return gradient_by_point(img)
 
 
 if __name__ == '__main__':
-    new_img_gradient((256, 256)).show()
-    print(type(new_img_gradient((512, 512))))
+    new_img_gradient((1024, 1024), 'shadow').show()
