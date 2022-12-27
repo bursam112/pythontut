@@ -36,6 +36,8 @@ def earth(degrees):
 def moon(degrees, shadow_degrees):
     apoapsis = 6
     periapsis = 1
+    # moon_img_scaled = pygame.transform.scale(moon_img_scaled, )
+    # moon_shadow_scaled = pygame.transform.scale(moon_shadow_scaled, )
     rotation(moon_img_scaled, shadow_degrees, earth_orbit(apoapsis, periapsis, degrees))
     rotation(moon_shadow_scaled, shadow_degrees, earth_orbit(apoapsis, periapsis, degrees))
 

@@ -19,4 +19,4 @@ def new_img_gradient(size, name):
 
 
 if __name__ == '__main__':
-    new_img_gradient((1024, 1024), 'shadow').show()
+    new_img_gradient((1024, 1024), 'sample').show()
